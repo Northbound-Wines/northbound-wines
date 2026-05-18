@@ -78,18 +78,14 @@ a {
 
 .brand {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.58em;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-size: 0.92rem;
+  align-items: center;
+  line-height: 0;
 }
 
-.brand small {
-  color: var(--moss-dark);
-  font-size: 0.92rem;
-  font-weight: 500;
+.brand img {
+  display: block;
+  width: min(290px, 54vw);
+  height: auto;
 }
 
 nav {
@@ -128,7 +124,7 @@ nav a:hover::after {
 
 .hero-inner {
   width: min(1180px, calc(100% - 48px));
-  margin: auto auto 8vh;
+  margin: clamp(72px, 10vh, 128px) auto 8vh;
 }
 
 .eyebrow,
@@ -414,9 +410,8 @@ footer p {
     padding-top: 22px;
   }
 
-  .brand,
-  .brand small {
-    font-size: 0.82rem;
+  .brand img {
+    width: min(220px, 62vw);
   }
 
   nav {
