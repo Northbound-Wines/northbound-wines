@@ -1,0 +1,156 @@
+import { defineField, defineType } from "sanity";
+
+export const region = defineType({
+  name: "region",
+  title: "Region",
+  type: "document",
+  fields: [
+    defineField({
+      name: "title",
+      title: "Title",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: { source: "title", maxLength: 96 },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "country",
+      title: "Country",
+      type: "string",
+      initialValue: "Italy",
+    }),
+    defineField({
+      name: "heroImage",
+      title: "Region Photo",
+      type: "image",
+      options: { hotspot: true },
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alt Text",
+          type: "string",
+          description: "Short description for accessibility and future exports.",
+        }),
+      ],
+    }),
+    defineField({
+      name: "overview",
+      title: "Short Overview",
+      type: "text",
+      rows: 6,
+      description: "Top-level orientation. Keep this to roughly 5-10 sentences.",
+    }),
+    defineField({
+      name: "bestKnownFor",
+      title: "Best Known For",
+      type: "array",
+      of: [{ type: "string" }],
+      options: { layout: "tags" },
+    }),
+    defineField({
+      name: "strongestWineStyles",
+      title: "Strongest Wine Styles",
+      type: "array",
+      of: [{ type: "string" }],
+      options: { layout: "tags" },
+    }),
+    defineField({
+      name: "bestFor",
+      title: "Best For",
+      type: "array",
+      of: [{ type: "string" }],
+      options: { layout: "tags" },
+      description: "Quick fit signals like white wine lovers, family travel, scenic driving, collectors.",
+    }),
+    defineField({
+      name: "idealTripLength",
+      title: "Ideal Trip Length",
+      type: "string",
+    }),
+    defineField({
+      name: "bestSeason",
+      title: "Best Season",
+      type: "string",
+    }),
+    defineField({
+      name: "travelDifficulty",
+      title: "Travel Difficulty",
+      type: "string",
+      options: {
+        list: ["Easy", "Easy to moderate", "Moderate", "Demanding"],
+      },
+    }),
+    defineField({
+      name: "priceLevel",
+      title: "Price Level",
+      type: "string",
+    }),
+    defineField({
+      name: "aboutRegion",
+      title: "About the Region",
+      type: "text",
+      rows: 8,
+      description: "Culture, history, language, traditions, and why the place is the way it is.",
+    }),
+    defineField({
+      name: "geographyClimate",
+      title: "Geography & Climate",
+      type: "text",
+      rows: 8,
+      description: "Mountains, valleys, elevation, soils, weather, and growing conditions.",
+    }),
+    defineField({
+      name: "wineStyle",
+      title: "What the Wines Feel Like",
+      type: "text",
+      rows: 8,
+      description: "Sensory identity, grapes, freshness/ripeness, body, acidity, oak, and aging.",
+    }),
+    defineField({
+      name: "producerLandscape",
+      title: "Producer Landscape",
+      type: "text",
+      rows: 8,
+      description: "Cooperatives, family estates, hospitality culture, appointment norms, and producer scale.",
+    }),
+    defineField({
+      name: "travelExperience",
+      title: "Travel Experience",
+      type: "text",
+      rows: 8,
+      description: "Practical and emotional travel feel. Avoid private itineraries.",
+    }),
+    defineField({
+      name: "northboundPerspective",
+      title: "Northbound Perspective",
+      type: "text",
+      rows: 6,
+      description: "Short, opinionated, public-safe perspective on why this region matters to Northbound.",
+    }),
+    defineField({
+      name: "styleSummary",
+      title: "Legacy Style Summary",
+      type: "text",
+      rows: 4,
+      hidden: true,
+    }),
+    defineField({
+      name: "travelContext",
+      title: "Legacy Travel Context",
+      type: "text",
+      rows: 4,
+      hidden: true,
+    }),
+  ],
+  preview: {
+    select: {
+      title: "title",
+      subtitle: "country",
+    },
+  },
+});
